@@ -1,1 +1,1 @@
-# ClickWise
+# ClickWyze
