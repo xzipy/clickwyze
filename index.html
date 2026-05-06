@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Wise — Digital Literacy with Xaden</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFEF9;
+    --ink: #1C1A16;
+    --ink-muted: #5C5748;
+    --gold: #C8841A;
+    --gold-light: #F5E6C8;
+    --gold-pale: #FDF5E4;
+    --teal: #1A7A6E;
+    --teal-light: #D4EDEA;
+    --teal-pale: #EDF7F6;
+    --coral: #C84A2E;
+    --coral-light: #FAD9D2;
+    --coral-pale: #FEF0ED;
+    --blue: #2B5FA8;
+    --blue-light: #D0DEFA;
+    --blue-pale: #EDF1FD;
+    --border: rgba(28,26,22,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 2rem;
+    overflow-x: auto;
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-right: 2rem;
+    white-space: nowrap;
+    padding: 1rem 0;
+    text-decoration: none;
+  }
+  .nav-btn {
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    padding: 1.1rem 1.2rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-btn:hover { color: var(--ink); }
+  .nav-btn.active { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* SPLASH */
+  .splash-hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .splash-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 340px; height: 340px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .splash-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .splash-badge {
+    display: inline-block;
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+  }
+  .splash-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--ink);
+    position: relative; z-index: 1;
+  }
+  .splash-hero h1 span { color: var(--gold); }
+  .splash-tagline {
+    font-size: 1.3rem;
+    color: var(--ink-muted);
+    max-width: 560px;
+    margin: 1.5rem auto 0;
+    position: relative; z-index: 1;
+  }
+  .splash-tagline strong { color: var(--teal); }
+  .splash-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: white;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #a86c12; transform: translateY(-1px); }
+  .btn-outline {
+    background: none;
+    color: var(--ink);
+    border: 2px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--ink-muted); transform: translateY(-1px); }
+
+  .splash-modules {
+    background: var(--cream);
+    padding: 4rem 2rem;
+  }
+  .splash-modules h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .module-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.75rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: left;
+  }
+  .module-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .module-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .module-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .module-card p { font-size: 1rem; color: var(--ink-muted); line-height: 1.6; }
+  .module-card .card-arrow {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .card-scam { border-top: 4px solid var(--coral); }
+  .card-scam .card-arrow { color: var(--coral); }
+  .card-password { border-top: 4px solid var(--teal); }
+  .card-password .card-arrow { color: var(--teal); }
+  .card-video { border-top: 4px solid var(--blue); }
+  .card-video .card-arrow { color: var(--blue); }
+
+  .splash-about {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .splash-about h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .splash-about p { max-width: 600px; margin: 0 auto 1.5rem; color: rgba(250,247,242,0.75); font-size: 1.05rem; }
+  .about-name { color: var(--gold); font-weight: 700; }
+
+  /* MODULE PAGES */
+  .module-page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .module-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .module-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .tag-coral { background: var(--coral-light); color: var(--coral); }
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+  .tag-blue { background: var(--blue-light); color: var(--blue); }
+  .module-header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .module-header p { font-size: 1.1rem; color: var(--ink-muted); max-width: 600px; }
+
+  .section-block {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-block h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .section-block p { font-size: 1.05rem; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.75; }
+  .section-block p:last-child { margin-bottom: 0; }
+  .section-block ul { padding-left: 1.4rem; }
+  .section-block li { font-size: 1.05rem; margin-bottom: 0.6rem; line-height: 1.65; }
+
+  .tip-box {
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  .tip-coral { background: var(--coral-pale); border-left: 4px solid var(--coral); }
+  .tip-teal { background: var(--teal-pale); border-left: 4px solid var(--teal); }
+  .tip-blue { background: var(--blue-pale); border-left: 4px solid var(--blue); }
+  .tip-gold { background: var(--gold-pale); border-left: 4px solid var(--gold); }
+  .tip-box strong { font-weight: 600; display: block; margin-bottom: 0.3rem; }
+
+  .example-box {
+    background: var(--cream);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .quiz-launcher {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: var(--warm-white);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+  }
+  .quiz-launcher .big-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+  .quiz-launcher h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-launcher p { color: var(--ink-muted); margin-bottom: 1.5rem; font-size: 1rem; }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,26,22,0.65);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--warm-white);
+    border-radius: var(--radius);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--border); }
+  .modal-box h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .modal-box .quiz-subtitle { color: var(--ink-muted); font-size: 1rem; margin-bottom: 2rem; }
+  .progress-bar-wrap {
+    background: var(--cream);
+    border-radius: 999px;
+    height: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .q-counter { font-size: 0.9rem; color: var(--ink-muted); margin-bottom: 0.5rem; font-weight: 500; }
+  .q-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.5; }
+  .q-options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .q-option {
+    background: var(--cream);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.2rem;
+    font-size: 1.05rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.15s, background 0.15s;
+    line-height: 1.5;
+  }
+  .q-option:hover:not(:disabled) { border-color: var(--gold); background: var(--gold-pale); }
+  .q-option.correct { border-color: var(--teal); background: var(--teal-pale); color: var(--teal); font-weight: 600; }
+  .q-option.wrong { border-color: var(--coral); background: var(--coral-pale); color: var(--coral); font-weight: 600; }
+  .q-option:disabled { cursor: default; }
+  .q-feedback {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    display: none;
+  }
+  .q-feedback.show { display: block; }
+  .q-feedback.correct { background: var(--teal-pale); color: var(--teal); }
+  .q-feedback.wrong { background: var(--coral-pale); color: var(--coral); }
+  .q-next {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: none;
+    transition: background 0.15s;
+  }
+  .q-next.show { display: block; }
+  .q-next:hover { background: #a86c12; }
+  .quiz-results { text-align: center; }
+  .score-circle {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Fraunces', serif;
+    border: 4px solid var(--gold);
+  }
+  .score-circle .score-num { font-size: 2.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .score-circle .score-denom { font-size: 1rem; color: var(--ink-muted); }
+  .quiz-results h3 { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .quiz-results p { color: var(--ink-muted); margin-bottom: 1.5rem; }
+  .retake-btn {
+    background: none;
+    border: 2px solid var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-right: 0.75rem;
+    transition: background 0.15s;
+  }
+  .retake-btn:hover { background: var(--cream); }
+
+  /* SURVEY PAGE */
+  .survey-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .survey-page .module-header h1 { color: var(--ink); }
+  .survey-section {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .survey-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .survey-q { margin-bottom: 1.75rem; }
+  .survey-q:last-child { margin-bottom: 0; }
+  .survey-q label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+  .survey-q label .required { color: var(--coral); margin-left: 3px; }
+  .star-row { display: flex; gap: 0.4rem; }
+  .star-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #D3CEC4;
+    transition: color 0.1s, transform 0.1s;
+    padding: 0.1rem;
+    line-height: 1;
+  }
+  .star-btn:hover, .star-btn.lit { color: var(--gold); transform: scale(1.15); }
+  .likert-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .likert-btn {
+    background: var(--cream);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    flex: 1; min-width: 60px; text-align: center;
+  }
+  .likert-btn.selected { background: var(--gold-pale); border-color: var(--gold); color: var(--gold); }
+  .likert-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--ink-muted); margin-top: 0.4rem; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 0.6rem; }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    cursor: pointer;
+  }
+  .checkbox-label input[type="checkbox"] {
+    width: 20px; height: 20px;
+    accent-color: var(--gold);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .survey-textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    background: var(--cream);
+    color: var(--ink);
+    transition: border-color 0.15s;
+  }
+  .survey-textarea:focus { outline: none; border-color: var(--gold); }
+  .survey-submit {
+    width: 100%;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .survey-submit:hover { background: #135f55; transform: translateY(-1px); }
+  .survey-thanks {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: none;
+  }
+  .survey-thanks .big-emoji { font-size: 4rem; display: block; margin-bottom: 1rem; }
+  .survey-thanks h2 { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 1rem; }
+  .survey-thanks p { color: var(--ink-muted); font-size: 1.1rem; max-width: 480px; margin: 0 auto; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #D3CEC4; border-radius: 4px; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 0.75rem; }
+    .nav-btn { padding: 1rem 0.75rem; font-size: 0.9rem; }
+    .splash-hero { min-height: 70vh; padding: 3rem 1.5rem; }
+    .module-page, .survey-page { padding: 2rem 1.25rem 4rem; }
+    .modal-box { padding: 1.75rem; }
+    .likert-btn { padding: 0.5rem 0.6rem; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">ClickWise</span>
+  <button class="nav-btn active" onclick="showPage('splash',this)">Home</button>
+  <button class="nav-btn" onclick="showPage('scams',this)">🚨 Scams</button>
+  <button class="nav-btn" onclick="showPage('passwords',this)">🔒 Passwords</button>
+  <button class="nav-btn" onclick="showPage('video',this)">📹 Video Calling</button>
+  <button class="nav-btn" onclick="showPage('survey',this)">📋 Survey</button>
+</nav>
+
+<!-- ===== SPLASH PAGE ===== -->
+<div id="page-splash" class="page active">
+  <div class="splash-hero">
+    <span class="splash-badge">Digital Literacy for Everyone</span>
+    <h1>Click<span>Wise</span></h1>
+    <p class="splash-tagline">A friendly guide to staying safe online — built with care by <strong>Xaden</strong> for your community.</p>
+    <div class="splash-cta-row">
+      <button class="btn-primary" onclick="showPage('scams', document.querySelectorAll('.nav-btn')[1])">Start Learning →</button>
+      <button class="btn-outline" onclick="showPage('survey', document.querySelectorAll('.nav-btn')[4])">Take the Survey</button>
+    </div>
+  </div>
+
+  <div class="splash-modules">
+    <h2>Three Essential Lessons</h2>
+    <div class="modules-grid">
+      <div class="module-card card-scam" onclick="showPage('scams', document.querySelectorAll('.nav-btn')[1])">
+        <span class="module-icon">🚨</span>
+        <h3>Recognizing Scams</h3>
+        <p>Learn how to spot suspicious messages, fake websites, and phone calls that try to steal your information.</p>
+        <span class="card-arrow">Start Module →</span>
+      </div>
+      <div class="module-card card-password" onclick="showPage('passwords', document.querySelectorAll('.nav-btn')[2])">
+        <span class="module-icon">🔒</span>
+        <h3>Strong Passwords</h3>
+        <p>Find out how to create passwords that are hard to guess — and tips for keeping track of them safely.</p>
+        <span class="card-arrow">Start Module →</span>
+      </div>
+      <div class="module-card card-video" onclick="showPage('video', document.querySelectorAll('.nav-btn')[3])">
+        <span class="module-icon">📹</span>
+        <h3>Video Calling</h3>
+        <p>Learn how to use Zoom and FaceTime to stay connected with family and friends from anywhere.</p>
+        <span class="card-arrow">Start Module →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="splash-about">
+    <h2>About This Project</h2>
+    <p>ClickWise was created by <span class="about-name">Xaden</span> as a senior capstone project to help community members navigate the digital world safely and confidently. Each module uses plain language, big text, and real examples.</p>
+    <p>After your workshop, please fill out our short <strong style="color:var(--gold)">Post-Workshop Survey</strong> so we can keep improving.</p>
+    <button class="btn-primary" onclick="showPage('survey', document.querySelectorAll('.nav-btn')[4])">Take the Survey</button>
+  </div>
+</div>
+
+<!-- ===== SCAMS MODULE ===== -->
+<div id="page-scams" class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <span class="module-tag tag-coral">Module 1</span>
+      <h1>🚨 Recognizing Scams</h1>
+      <p>Scammers try to trick people every day. This lesson teaches you what to look for — so you can stay safe and protect your information.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What Is a Scam?</h2>
+      <p>A scam is when someone tries to <strong>trick you into giving away money or personal information</strong> — like your Social Security number, bank account, or passwords.</p>
+      <p>Scams can arrive by phone call, text message, email, or even at your front door. They can seem very real, but there are warning signs you can learn to spot.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>The 5 Big Warning Signs</h2>
+      <ul>
+        <li><strong>It creates urgency.</strong> "Act NOW or your account will be closed!" Real companies rarely demand instant action.</li>
+        <li><strong>It asks for unusual payment.</strong> Requests for gift cards, wire transfers, or cryptocurrency are almost always scams.</li>
+        <li><strong>It's too good to be true.</strong> "You've won $10,000!" — if you didn't enter a contest, you didn't win.</li>
+        <li><strong>It asks for personal info.</strong> Your bank, Medicare, or Social Security office will <em>never</em> call and ask for your number.</li>
+        <li><strong>The contact info looks off.</strong> Emails from "amazon-support@gmail.com" or phone numbers you don't recognize are red flags.</li>
+      </ul>
+      <div class="tip-box tip-coral">
+        <strong>⚠️ Golden Rule:</strong> When in doubt, hang up or don't click. You can always call the company back using the number on their official website.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Common Scam Types</h2>
+      <p><strong>Tech Support Scam:</strong> A pop-up or caller says your computer has a virus and asks you to pay to fix it or give them remote access.</p>
+      <div class="example-box">"Your computer has been hacked. Call Microsoft immediately at 1-800-XXX-XXXX." — This is always fake. Microsoft does not call you.</div>
+      <p><strong>Grandparent Scam:</strong> Someone calls pretending to be your grandchild in trouble, asking for money urgently.</p>
+      <div class="example-box">"Grandma, it's me! I'm in trouble and need $500 in gift cards — please don't tell Mom." — Hang up and call your grandchild directly.</div>
+      <p><strong>Phishing Email:</strong> A fake email pretending to be from your bank, the IRS, or Amazon, asking you to click a link and enter your details.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What To Do If You're Targeted</h2>
+      <ul>
+        <li>Hang up, close the email, or delete the text — right away.</li>
+        <li>Do <strong>not</strong> click any links or call any phone numbers in suspicious messages.</li>
+        <li>Talk to a trusted family member or friend before doing anything.</li>
+        <li>Report it: call 1-877-382-4357 (the FTC's fraud hotline).</li>
+      </ul>
+      <div class="tip-box tip-gold">
+        <strong>💛 You're not alone:</strong> Millions of people are targeted by scams every year. Being tricked doesn't mean you did anything wrong — scammers are professionals at deception.
+      </div>
+    </div>
+
+    <div class="quiz-launcher">
+      <span class="big-emoji">🧠</span>
+      <h3>Ready to Test Your Knowledge?</h3>
+      <p>5 quick questions on scam recognition. You'll get instant feedback on each answer.</p>
+      <button class="btn-primary" onclick="openQuiz('scams')">Start Quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PASSWORDS MODULE ===== -->
+<div id="page-passwords" class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <span class="module-tag tag-teal">Module 2</span>
+      <h1>🔒 Strong Passwords</h1>
+      <p>A good password is your first line of defense online. This lesson shows you how to create strong ones — and how to keep track of them.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>Why Passwords Matter</h2>
+      <p>When you create an account online — for email, banking, or shopping — a password is the key to that account. A weak password is like a flimsy lock on your front door.</p>
+      <p>If a scammer guesses your password, they can access your email, your bank account, and even your personal photos.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What Makes a Password Weak?</h2>
+      <ul>
+        <li>Using your name, birthday, or pet's name.</li>
+        <li>Common words like "password," "hello," or "123456."</li>
+        <li>Short passwords — anything under 8 characters.</li>
+        <li>Using the same password for every account.</li>
+      </ul>
+      <div class="tip-box tip-coral">
+        <strong>🚫 Avoid these:</strong> "Mary1950" · "password123" · "ilovemydogs" — these are among the first things hackers try.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>How to Create a Strong Password</h2>
+      <p>The best passwords are <strong>long, random, and unique</strong>. Here's a simple method that works great:</p>
+      <p><strong>The "Three Random Words" method:</strong> Pick 3 words that have nothing to do with each other, then add some numbers and a symbol.</p>
+      <div class="example-box">
+        🍎 "Apple" + 🚂 "Train" + 🌵 "Cactus" → <strong>AppleTrain!Cactus47</strong><br><br>
+        This is easy to remember but very hard to guess. It's 20 characters long!
+      </div>
+      <p><strong>Tips for a great password:</strong></p>
+      <ul>
+        <li>At least 12 characters long (longer is better)</li>
+        <li>Mix uppercase and lowercase letters</li>
+        <li>Include a number and a symbol like ! @ # $</li>
+        <li>Never use it for more than one account</li>
+      </ul>
+      <div class="tip-box tip-teal">
+        <strong>✅ Strong example:</strong> "BlueSky!Porch84" — 15 characters, mixed case, a symbol, and numbers. Much better than "Mary1950"!
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>How to Keep Track of Passwords</h2>
+      <p>It's hard to remember many different passwords. Here are your options:</p>
+      <p><strong>Option 1 — Write them down</strong> (safely): Keep a small notebook with your passwords. Store it in a secure, private place — not on your desk or near your computer. Label it something ordinary.</p>
+      <p><strong>Option 2 — Use a Password Manager:</strong> These are apps (like LastPass or the one built into your phone) that store all your passwords securely. You only need to remember one master password.</p>
+      <div class="tip-box tip-gold">
+        <strong>💛 Ask for help:</strong> Setting up a password manager is easier with a family member or tech helper. It's worth the effort — you only set it up once!
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Two-Step Verification</h2>
+      <p>Many websites offer "two-step verification" (also called 2FA). When you log in, they send a text message with a short code to your phone. You type that code to prove it's really you.</p>
+      <p>This is like having two locks on your door. Even if someone guesses your password, they still can't get in without your phone.</p>
+      <div class="tip-box tip-blue">
+        <strong>📱 Turn it on:</strong> If your bank or email offers two-step verification, it's a good idea to enable it. Ask a family member or the bank to help you set it up.
+      </div>
+    </div>
+
+    <div class="quiz-launcher">
+      <span class="big-emoji">🧠</span>
+      <h3>Ready to Test Your Knowledge?</h3>
+      <p>5 quick questions on creating strong passwords. You'll get instant feedback on each answer.</p>
+      <button class="btn-primary" onclick="openQuiz('passwords')">Start Quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIDEO CALLING MODULE ===== -->
+<div id="page-video" class="page">
+  <div class="module-page">
+    <div class="module-header">
+      <span class="module-tag tag-blue">Module 3</span>
+      <h1>📹 Video Calling</h1>
+      <p>Video calls let you see and talk to family and friends face-to-face, even from far away. Let's learn how to use them with confidence.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What Is a Video Call?</h2>
+      <p>A video call is like a phone call — but with video. You can see the person you're talking to on your screen, and they can see you. It's a wonderful way to feel connected.</p>
+      <p>Popular apps include <strong>FaceTime</strong> (for Apple devices like iPhones and iPads) and <strong>Zoom</strong> (works on any device, great for groups).</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What You Need</h2>
+      <ul>
+        <li>A smartphone, tablet, or computer with a camera and microphone (most have these built in).</li>
+        <li>A Wi-Fi or internet connection.</li>
+        <li>The app installed (FaceTime comes pre-installed on Apple devices; Zoom is a free download).</li>
+      </ul>
+      <div class="tip-box tip-blue">
+        <strong>📡 Wi-Fi tip:</strong> Video calls use more internet than regular calls. If the image is blurry or choppy, try moving closer to your Wi-Fi router.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>How to Make a FaceTime Call</h2>
+      <ul>
+        <li><strong>Step 1:</strong> Open the FaceTime app on your iPhone or iPad — it looks like a green video camera.</li>
+        <li><strong>Step 2:</strong> Tap the "+" button to start a new call.</li>
+        <li><strong>Step 3:</strong> Type in the name or phone number of the person you want to call.</li>
+        <li><strong>Step 4:</strong> Tap "Video" to start the video call.</li>
+        <li><strong>Step 5:</strong> When you're done, tap the red "End" button.</li>
+      </ul>
+      <div class="tip-box tip-teal">
+        <strong>📱 Both people need Apple:</strong> FaceTime only works between Apple devices (iPhones, iPads, or Macs). If the other person has Android, use Zoom instead.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>How to Join a Zoom Meeting</h2>
+      <ul>
+        <li><strong>Step 1:</strong> Someone will send you a Zoom link — usually by text message or email. It looks like a web address (e.g., zoom.us/j/1234567890).</li>
+        <li><strong>Step 2:</strong> Tap or click the link. Your phone or computer will open Zoom automatically.</li>
+        <li><strong>Step 3:</strong> Tap "Join with Video" to let others see you.</li>
+        <li><strong>Step 4:</strong> Tap "Join with Audio" (or "Call Over Internet") so others can hear you.</li>
+        <li><strong>Step 5:</strong> You're in! To leave, tap "Leave" or the red "X."</li>
+      </ul>
+      <div class="example-box">If you receive a text that says "Join our family call Saturday at 2pm: zoom.us/j/987654321" — just tap that link at 2pm and follow the steps above.</div>
+    </div>
+
+    <div class="section-block">
+      <h2>During the Call: Helpful Buttons</h2>
+      <ul>
+        <li><strong>🔇 Mute/Unmute:</strong> Tap the microphone icon to turn your sound on or off. Mute yourself when you're not speaking in large groups — it reduces background noise.</li>
+        <li><strong>📷 Camera on/off:</strong> Tap the camera icon to show or hide your video.</li>
+        <li><strong>💬 Chat:</strong> In Zoom, you can type messages to everyone — great if someone can't hear you.</li>
+        <li><strong>🔴 Leave:</strong> Always tap "Leave" rather than just closing the app — it lets others know you've gone.</li>
+      </ul>
+      <div class="tip-box tip-gold">
+        <strong>💡 Lighting tip:</strong> Sit facing a window or a lamp — natural light in front of you makes you look great on video! Avoid sitting with a window behind you.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Staying Safe on Video Calls</h2>
+      <ul>
+        <li>Only join calls from people you know. Be cautious about links from strangers.</li>
+        <li>You're allowed to keep your camera off if you're not comfortable — just tap the camera icon.</li>
+        <li>If something feels wrong during a call, it's okay to leave immediately.</li>
+      </ul>
+    </div>
+
+    <div class="quiz-launcher">
+      <span class="big-emoji">🧠</span>
+      <h3>Ready to Test Your Knowledge?</h3>
+      <p>5 quick questions on video calling. You'll get instant feedback on each answer.</p>
+      <button class="btn-primary" onclick="openQuiz('video')">Start Quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SURVEY PAGE ===== -->
+<div id="page-survey" class="page">
+  <div class="survey-page">
+    <div class="module-header">
+      <span class="module-tag" style="background:#E8F5E9;color:#2E7D32;">Post-Workshop</span>
+      <h1>📋 Workshop Survey</h1>
+      <p>Thank you for attending! Your feedback helps make future workshops even better. This takes about 3 minutes.</p>
+    </div>
+
+    <div id="survey-form">
+      <div class="survey-section">
+        <h2>Overall Experience</h2>
+        <div class="survey-q">
+          <label>How would you rate the workshop overall? <span class="required">*</span></label>
+          <div class="star-row" id="stars-overall">
+            <button class="star-btn" onclick="setStar('overall',1)" title="1 star">★</button>
+            <button class="star-btn" onclick="setStar('overall',2)" title="2 stars">★</button>
+            <button class="star-btn" onclick="setStar('overall',3)" title="3 stars">★</button>
+            <button class="star-btn" onclick="setStar('overall',4)" title="4 stars">★</button>
+            <button class="star-btn" onclick="setStar('overall',5)" title="5 stars">★</button>
+          </div>
+        </div>
+        <div class="survey-q">
+          <label>How easy was the material to understand?</label>
+          <div class="likert-row" id="likert-understand">
+            <button class="likert-btn" onclick="setLikert('understand',1)">1</button>
+            <button class="likert-btn" onclick="setLikert('understand',2)">2</button>
+            <button class="likert-btn" onclick="setLikert('understand',3)">3</button>
+            <button class="likert-btn" onclick="setLikert('understand',4)">4</button>
+            <button class="likert-btn" onclick="setLikert('understand',5)">5</button>
+          </div>
+          <div class="likert-labels"><span>Very Confusing</span><span>Very Easy</span></div>
+        </div>
+        <div class="survey-q">
+          <label>How confident do you feel using the internet now compared to before?</label>
+          <div class="likert-row" id="likert-confidence">
+            <button class="likert-btn" onclick="setLikert('confidence',1)">1</button>
+            <button class="likert-btn" onclick="setLikert('confidence',2)">2</button>
+            <button class="likert-btn" onclick="setLikert('confidence',3)">3</button>
+            <button class="likert-btn" onclick="setLikert('confidence',4)">4</button>
+            <button class="likert-btn" onclick="setLikert('confidence',5)">5</button>
+          </div>
+          <div class="likert-labels"><span>Much Less Confident</span><span>Much More Confident</span></div>
+        </div>
+      </div>
+
+      <div class="survey-section">
+        <h2>The Modules</h2>
+        <div class="survey-q">
+          <label>Which module(s) did you find most helpful? (Select all that apply)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="scams"> 🚨 Recognizing Scams</label>
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="passwords"> 🔒 Strong Passwords</label>
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="video"> 📹 Video Calling</label>
+          </div>
+        </div>
+        <div class="survey-q">
+          <label>How useful were the quizzes at the end of each module?</label>
+          <div class="likert-row" id="likert-quizzes">
+            <button class="likert-btn" onclick="setLikert('quizzes',1)">1</button>
+            <button class="likert-btn" onclick="setLikert('quizzes',2)">2</button>
+            <button class="likert-btn" onclick="setLikert('quizzes',3)">3</button>
+            <button class="likert-btn" onclick="setLikert('quizzes',4)">4</button>
+            <button class="likert-btn" onclick="setLikert('quizzes',5)">5</button>
+          </div>
+          <div class="likert-labels"><span>Not Useful</span><span>Very Useful</span></div>
+        </div>
+      </div>
+
+      <div class="survey-section">
+        <h2>About Xaden's Presentation</h2>
+        <div class="survey-q">
+          <label>How would you rate Xaden's teaching?</label>
+          <div class="star-row" id="stars-presenter">
+            <button class="star-btn" onclick="setStar('presenter',1)" title="1 star">★</button>
+            <button class="star-btn" onclick="setStar('presenter',2)" title="2 stars">★</button>
+            <button class="star-btn" onclick="setStar('presenter',3)" title="3 stars">★</button>
+            <button class="star-btn" onclick="setStar('presenter',4)" title="4 stars">★</button>
+            <button class="star-btn" onclick="setStar('presenter',5)" title="5 stars">★</button>
+          </div>
+        </div>
+        <div class="survey-q">
+          <label>Did the pace of the workshop feel right?</label>
+          <div class="likert-row" id="likert-pace">
+            <button class="likert-btn" onclick="setLikert('pace',1)">Too Slow</button>
+            <button class="likert-btn" onclick="setLikert('pace',2)">Slightly Slow</button>
+            <button class="likert-btn" onclick="setLikert('pace',3)">Just Right</button>
+            <button class="likert-btn" onclick="setLikert('pace',4)">Slightly Fast</button>
+            <button class="likert-btn" onclick="setLikert('pace',5)">Too Fast</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="survey-section">
+        <h2>Looking Ahead</h2>
+        <div class="survey-q">
+          <label>Would you recommend this workshop to a friend?</label>
+          <div class="likert-row" id="likert-recommend">
+            <button class="likert-btn" onclick="setLikert('recommend',1)">Definitely Not</button>
+            <button class="likert-btn" onclick="setLikert('recommend',2)">Probably Not</button>
+            <button class="likert-btn" onclick="setLikert('recommend',3)">Maybe</button>
+            <button class="likert-btn" onclick="setLikert('recommend',4)">Probably</button>
+            <button class="likert-btn" onclick="setLikert('recommend',5)">Definitely!</button>
+          </div>
+        </div>
+        <div class="survey-q">
+          <label>What topic would you like to learn about next?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" name="next" value="shopping"> 🛒 Online Shopping Safely</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="social"> 👥 Social Media Basics</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="health"> 🏥 Using Health Portals</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="phone"> 📱 Smartphone Tips</label>
+          </div>
+        </div>
+        <div class="survey-q">
+          <label>Any other comments, questions, or suggestions for Xaden?</label>
+          <textarea class="survey-textarea" id="comments" placeholder="Type anything here — we read every response!"></textarea>
+        </div>
+      </div>
+
+      <button class="survey-submit" onclick="submitSurvey()">Submit My Feedback ✓</button>
+    </div>
+
+    <div class="survey-thanks" id="survey-thanks">
+      <span class="big-emoji">🎉</span>
+      <h2>Thank You So Much!</h2>
+      <p>Your feedback means the world. Xaden will use your responses to make future workshops even better. You're helping your whole community!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ MODAL ===== -->
+<div class="modal-overlay" id="quiz-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuiz()" aria-label="Close quiz">✕</button>
+    <h2 id="quiz-title">Quiz</h2>
+    <p class="quiz-subtitle" id="quiz-subtitle">Test what you've learned</p>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quiz-progress" style="width:0%"></div></div>
+    <div id="quiz-question-area">
+      <div class="q-counter" id="q-counter"></div>
+      <div class="q-text" id="q-text"></div>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-feedback" id="q-feedback"></div>
+      <button class="q-next" id="q-next" onclick="nextQuestion()">Next Question →</button>
+    </div>
+    <div id="quiz-results-area" class="quiz-results" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+const QUIZZES = {
+  scams: {
+    title: "🚨 Scam Recognition Quiz",
+    subtitle: "5 questions — see how scam-smart you are!",
+    questions: [
+      {
+        q: "You get a call saying you've won $5,000 but must pay $200 in gift cards to claim the prize. What should you do?",
+        opts: ["Buy the gift cards — it sounds like a great deal!", "Ask for more details first", "Hang up immediately — this is a scam", "Give them your bank account number"],
+        correct: 2,
+        explain: "Correct! Requests for gift card payments are always a scam sign. No legitimate prize requires you to pay to collect it."
+      },
+      {
+        q: "An email from 'amazon-refunds@gmail.com' says you're owed a $250 refund and must click a link to claim it. What's the red flag here?",
+        opts: ["The amount is too high", "Amazon uses Gmail, so this seems fine", "The email address uses Gmail, not an official Amazon domain", "There are no red flags — Amazon gives refunds"],
+        correct: 2,
+        explain: "Right! Amazon's emails come from @amazon.com — not @gmail.com. Any big company using a free email service is suspicious."
+      },
+      {
+        q: "A pop-up on your computer says 'VIRUS DETECTED! Call Microsoft at 1-800-555-0199 immediately.' What do you do?",
+        opts: ["Call the number right away — your computer is in danger", "Close the pop-up or restart your browser — this is a fake alert", "Give them your credit card to fix it", "Download the software they suggest"],
+        correct: 1,
+        explain: "Exactly right! Microsoft never sends pop-up alerts asking you to call them. This is a classic tech support scam."
+      },
+      {
+        q: "Someone calls claiming to be your grandchild, saying they're in trouble and need $1,000 in cash right away — and asks you not to tell the family. What should you do?",
+        opts: ["Send the money — they said it's urgent", "Hang up and call your grandchild on a number you already have", "Ask them for a secret code word to confirm their identity", "Wire transfer is safer than cash"],
+        correct: 1,
+        explain: "Yes! Always hang up and call your grandchild directly using a number you know is theirs. The 'secrecy' request is a huge red flag."
+      },
+      {
+        q: "Which of these is a safe way to verify if a call from your bank is real?",
+        opts: ["Trust the caller if they know your first name", "Call the number on the back of your bank card", "Give them the last 4 digits of your Social Security number to confirm your identity", "Ask them to email you the details"],
+        correct: 1,
+        explain: "Perfect! Always call your bank back using the official number on your card or statement — never use a number given to you by the caller."
+      }
+    ]
+  },
+  passwords: {
+    title: "🔒 Password Strength Quiz",
+    subtitle: "5 questions — test your password knowledge!",
+    questions: [
+      {
+        q: "Which of these passwords is the strongest?",
+        opts: ["password123", "Mary1950", "BlueRainyCloud!47", "ilovemygrandkids"],
+        correct: 2,
+        explain: "Correct! 'BlueRainyCloud!47' is long, mixes uppercase and lowercase, has numbers and a symbol, and doesn't use personal info."
+      },
+      {
+        q: "You want to make a strong password. How long should it ideally be?",
+        opts: ["At least 4 characters", "At least 6 characters", "At least 12 characters", "Exactly 8 characters"],
+        correct: 2,
+        explain: "Right! Passwords should be at least 12 characters long. The longer, the better — each extra character makes it exponentially harder to crack."
+      },
+      {
+        q: "You use the same password for your email, bank, and shopping. Why is this risky?",
+        opts: ["It's not risky — it's easier to remember", "If one site is hacked, criminals can access all your accounts", "It only matters if someone sees you type it", "Websites share passwords anyway"],
+        correct: 1,
+        explain: "Exactly! If any one of those sites is hacked and your password is exposed, criminals will try it on all other major websites immediately."
+      },
+      {
+        q: "A website offers 'two-step verification.' What does this mean?",
+        opts: ["You need two passwords", "You log in with your password AND a code texted to your phone", "You have to answer two security questions", "Two people share the account"],
+        correct: 1,
+        explain: "Correct! Two-step verification adds a second check — usually a code sent to your phone — so even if someone knows your password, they still can't get in."
+      },
+      {
+        q: "What is the safest way to keep track of your many different passwords?",
+        opts: ["Use the same one for everything", "Write them on a sticky note on your monitor", "Keep a private notebook in a secure spot, or use a password manager app", "Never write them down — just try to remember"],
+        correct: 2,
+        explain: "Well done! A private notebook stored safely away from your computer (or a trusted password manager app) is a secure way to track your passwords."
+      }
+    ]
+  },
+  video: {
+    title: "📹 Video Calling Quiz",
+    subtitle: "5 questions — how much did you learn?",
+    questions: [
+      {
+        q: "You want to video call your grandchild who has an Android phone. Which app should you use?",
+        opts: ["FaceTime", "Zoom", "It doesn't matter — both work on Android", "You can't video call Android from Apple"],
+        correct: 1,
+        explain: "Correct! FaceTime only works between Apple devices. Zoom works on any device — iPhone, Android, tablet, or computer."
+      },
+      {
+        q: "During a Zoom meeting, there's a lot of background noise. What's the quickest fix?",
+        opts: ["Leave the meeting and rejoin", "Tap the microphone icon to mute yourself", "Turn off your camera", "Ask everyone else to be quiet"],
+        correct: 1,
+        explain: "Right! The mute button (microphone icon) instantly silences your audio. Unmute yourself when you want to speak."
+      },
+      {
+        q: "Your Zoom video looks blurry and keeps freezing. What should you try first?",
+        opts: ["Buy a new phone", "Move closer to your Wi-Fi router", "Restart the Zoom app twice", "Turn off your camera"],
+        correct: 1,
+        explain: "Exactly! Video calls need a good internet connection. Moving closer to your Wi-Fi router is the easiest first step."
+      },
+      {
+        q: "You receive a Zoom link via text from an unknown number saying 'Join our free giveaway meeting.' What should you do?",
+        opts: ["Join — free giveaways are exciting!", "Don't join — it could be a scam; only accept calls from people you know", "Join but keep your camera off", "Share the link with family"],
+        correct: 1,
+        explain: "Correct! Only join video calls from people you know and trust. A link from a stranger promising a 'giveaway' is a red flag."
+      },
+      {
+        q: "To look your best on a video call, where should your main light source be?",
+        opts: ["Behind you, shining at the camera", "In front of you, shining on your face", "Directly above your head", "It doesn't matter — just use the brightest lamp"],
+        correct: 1,
+        explain: "Well done! Light should come from in front of you — facing a window or lamp lights up your face. Light behind you makes you look like a dark silhouette."
+      }
+    ]
+  }
+};
+
+let currentQuiz = null;
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openQuiz(type) {
+  currentQuiz = QUIZZES[type];
+  currentQ = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('quiz-title').textContent = currentQuiz.title;
+  document.getElementById('quiz-subtitle').textContent = currentQuiz.subtitle;
+  document.getElementById('quiz-results-area').style.display = 'none';
+  document.getElementById('quiz-question-area').style.display = 'block';
+  document.getElementById('quiz-modal').classList.add('open');
+  renderQuestion();
+}
+
+function closeQuiz() {
+  document.getElementById('quiz-modal').classList.remove('open');
+}
+
+function renderQuestion() {
+  const q = currentQuiz.questions[currentQ];
+  const total = currentQuiz.questions.length;
+  document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${total}`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('quiz-progress').style.width = ((currentQ / total) * 100) + '%';
+
+  const optArea = document.getElementById('q-options');
+  optArea.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-option';
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(i);
+    optArea.appendChild(btn);
+  });
+
+  const fb = document.getElementById('q-feedback');
+  fb.className = 'q-feedback';
+  fb.textContent = '';
+  document.getElementById('q-next').className = 'q-next';
+  answered = false;
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = currentQuiz.questions[currentQ];
+  const opts = document.querySelectorAll('.q-option');
+  opts.forEach(b => b.disabled = true);
+  const fb = document.getElementById('q-feedback');
+  const nextBtn = document.getElementById('q-next');
+  const isLast = currentQ === currentQuiz.questions.length - 1;
+
+  if (idx === q.correct) {
+    score++;
+    opts[idx].classList.add('correct');
+    fb.className = 'q-feedback correct show';
+    fb.textContent = '✓ ' + q.explain;
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+    fb.className = 'q-feedback wrong show';
+    fb.textContent = '✗ ' + q.explain;
+  }
+
+  nextBtn.textContent = isLast ? 'See My Results →' : 'Next Question →';
+  nextBtn.className = 'q-next show';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= currentQuiz.questions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  const total = currentQuiz.questions.length;
+  const pct = Math.round((score / total) * 100);
+  let message, emoji;
+  if (pct === 100) { message = "Perfect score! You're a digital safety expert."; emoji = "🏆"; }
+  else if (pct >= 80) { message = "Excellent work! You've got a solid grasp of the material."; emoji = "🌟"; }
+  else if (pct >= 60) { message = "Good effort! Review the module again to strengthen your knowledge."; emoji = "👍"; }
+  else { message = "Keep going! Reading through the module again will help a lot."; emoji = "📚"; }
+
+  document.getElementById('quiz-question-area').style.display = 'none';
+  document.getElementById('quiz-progress').style.width = '100%';
+  const ra = document.getElementById('quiz-results-area');
+  ra.style.display = 'block';
+  ra.innerHTML = `
+    <div class="quiz-results">
+      <div class="score-circle">
+        <span class="score-num">${score}</span>
+        <span class="score-denom">out of ${total}</span>
+      </div>
+      <div style="font-size:2rem;margin-bottom:0.5rem;">${emoji}</div>
+      <h3>${pct}% — ${score === total ? 'Perfect!' : score >= total * 0.8 ? 'Great Job!' : score >= total * 0.6 ? 'Good Try!' : 'Keep Learning!'}</h3>
+      <p>${message}</p>
+      <button class="retake-btn" onclick="openQuiz('${Object.keys(QUIZZES).find(k => QUIZZES[k] === currentQuiz)}')">Retake Quiz</button>
+      <button class="btn-primary" onclick="closeQuiz()">Done</button>
+    </div>
+  `;
+}
+
+// Survey interactions
+const starValues = {};
+const likertValues = {};
+
+function setStar(group, val) {
+  starValues[group] = val;
+  const btns = document.querySelectorAll(`#stars-${group} .star-btn`);
+  btns.forEach((b, i) => b.classList.toggle('lit', i < val));
+}
+
+function setLikert(group, val) {
+  likertValues[group] = val;
+  const btns = document.querySelectorAll(`#likert-${group} .likert-btn`);
+  btns.forEach((b, i) => b.classList.toggle('selected', i === val - 1));
+}
+
+function submitSurvey() {
+  document.getElementById('survey-form').style.display = 'none';
+  document.getElementById('survey-thanks').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Close modal on backdrop click
+document.getElementById('quiz-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeQuiz();
+});
+</script>
+</body>
+</html>
