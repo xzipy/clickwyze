@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Click Wise — Digital Literacy with Xaden</title>
+<title>Click Wyze — Digital Literacy with Xaden</title>
 
 <!--Link Style.css-->
 <link rel="stylesheet" href="style.css">
@@ -13,12 +13,12 @@
 <body>
 
 <nav>
-  <span class="nav-logo">ClickWise</span>
-  <button class="nav-btn active" onclick="showPage('splash',this)">Home</button>
-  <button class="nav-btn" onclick="showPage('scams',this)">🚨 Scams</button>
-  <button class="nav-btn" onclick="showPage('passwords',this)">🔒 Passwords</button>
-  <button class="nav-btn" onclick="showPage('video',this)">📹 Video Calling</button>
-  <button class="nav-btn" onclick="showPage('survey',this)">📋 Survey</button>
+  <span class="nav-logo">ClickWyze</span>
+  <button class="nav-btn active" onclick="showPage('splash',this)">🔵 Home</button>
+  <button class="nav-btn" onclick="showPage('scams',this)">🔵 Scams</button>
+  <button class="nav-btn" onclick="showPage('passwords',this)">🔵 Passwords</button>
+  <button class="nav-btn" onclick="showPage('video',this)">🔵 Video Calling</button>
+  <button class="nav-btn" onclick="showPage('survey',this)">🔵 Survey</button>
 </nav>
 
 <!-- ===== SPLASH PAGE ===== -->
@@ -26,9 +26,9 @@
   <div class="splash-hero">
     <span class="splash-badge">Digital Literacy for Everyone</span>
     <h1>Click<span>Wise</span></h1>
-    <p class="splash-tagline">A friendly guide to staying safe online — built with care by <strong>Xaden</strong> for your community.</p>
+    <p class="splash-tagline">A digital literacy education tool — built by <strong>Xaden</strong> for your community.</p>
     <div class="splash-cta-row">
-      <button class="btn-primary" onclick="showPage('scams', document.querySelectorAll('.nav-btn')[1])">Start Learning →</button>
+      <button class="btn-primary" onclick="showPage('scams', document.querySelectorAll('.nav-btn')[1])">Start Learning</button>
       <button class="btn-outline" onclick="showPage('survey', document.querySelectorAll('.nav-btn')[4])">Take the Survey</button>
     </div>
   </div>
@@ -45,7 +45,7 @@
       <div class="module-card card-password" onclick="showPage('passwords', document.querySelectorAll('.nav-btn')[2])">
         <span class="module-icon">🔒</span>
         <h3>Strong Passwords</h3>
-        <p>Find out how to create passwords that are hard to guess — and tips for keeping track of them safely.</p>
+        <p>Find out how to create passwords that are hard to guess and tips for keeping track of them safely.</p>
         <span class="card-arrow">Start Module →</span>
       </div>
       <div class="module-card card-video" onclick="showPage('video', document.querySelectorAll('.nav-btn')[3])">
@@ -59,7 +59,7 @@
 
   <div class="splash-about">
     <h2>About This Project</h2>
-    <p>ClickWise was created by <span class="about-name">Xaden</span> as a senior capstone project to help community members navigate the digital world safely and confidently. Each module uses plain language, big text, and real examples.</p>
+    <p>ClickWyze was created by <span class="about-name">Xaden</span> as a senior project to help community members navigate the digital world safely and confidently. Each module uses plain language, big text, and real-world examples.</p>
     <p>After your workshop, please fill out our short <strong style="color:var(--gold)">Post-Workshop Survey</strong> so we can keep improving.</p>
     <button class="btn-primary" onclick="showPage('survey', document.querySelectorAll('.nav-btn')[4])">Take the Survey</button>
   </div>
@@ -70,49 +70,50 @@
   <div class="module-page">
     <div class="module-header">
       <span class="module-tag tag-coral">Module 1</span>
-      <h1>🚨 Recognizing Scams</h1>
-      <p>Scammers try to trick people every day. This lesson teaches you what to look for — so you can stay safe and protect your information.</p>
+      <h1>Recognizing Scams</h1>
+      <p>Scammers lie around each and every corner. This lesson teaches you what to look for so you can stay safe and protect your information.</p>
     </div>
 
     <div class="section-block">
       <h2>What Is a Scam?</h2>
-      <p>A scam is when someone tries to <strong>trick you into giving away money or personal information</strong> — like your Social Security number, bank account, or passwords.</p>
-      <p>Scams can arrive by phone call, text message, email, or even at your front door. They can seem very real, but there are warning signs you can learn to spot.</p>
+      <p>A scam is when someone tries to <strong>trick you into giving away money or personal information</strong> like your Social Security number, bank account, or password.</p>
+      <p>Scams can take the form of a phone call, text message, email, or even a person at your front door. They can seem very real, but there are various warning signs you can learn to spot.</p>
     </div>
 
     <div class="section-block">
       <h2>The 5 Big Warning Signs</h2>
       <ul>
-        <li><strong>It creates urgency.</strong> "Act NOW or your account will be closed!" Real companies rarely demand instant action.</li>
-        <li><strong>It asks for unusual payment.</strong> Requests for gift cards, wire transfers, or cryptocurrency are almost always scams.</li>
-        <li><strong>It's too good to be true.</strong> "You've won $10,000!" — if you didn't enter a contest, you didn't win.</li>
+        <li><strong>It creates urgency.</strong> "Act NOW or your account will be closed!" Legit companies rarely demand instant action.</li>
+        <li><strong>It asks for unusual payment.</strong> Requests for payment via gift cards, wire transfers, or cryptocurrency are almost always scams.</li>
+        <li><strong>It's too good to be true.</strong> "You've won $10,000!" If you didn't enter a contest, you didn't win.</li>
         <li><strong>It asks for personal info.</strong> Your bank, Medicare, or Social Security office will <em>never</em> call and ask for your number.</li>
-        <li><strong>The contact info looks off.</strong> Emails from "amazon-support@gmail.com" or phone numbers you don't recognize are red flags.</li>
+        <li><strong>The contact info looks off.</strong> Emails from "amazon-support@gmail.com" or phone numbers you don't recognize are major red flags.</li>
       </ul>
       <div class="tip-box tip-coral">
-        <strong>⚠️ Golden Rule:</strong> When in doubt, hang up or don't click. You can always call the company back using the number on their official website.
+        <strong>Golden Rule:</strong> When in doubt, hang up or don't click. You can always call the company back using the number on their official website or physical media.
       </div>
     </div>
 
     <div class="section-block">
       <h2>Common Scam Types</h2>
       <p><strong>Tech Support Scam:</strong> A pop-up or caller says your computer has a virus and asks you to pay to fix it or give them remote access.</p>
-      <div class="example-box">"Your computer has been hacked. Call Microsoft immediately at 1-800-XXX-XXXX." — This is always fake. Microsoft does not call you.</div>
+      <div class="example-box">"Your computer has been hacked. Call Microsoft immediately at 1-800-XXX-XXXX." This is always fake. Microsoft does not call you.</div>
       <p><strong>Grandparent Scam:</strong> Someone calls pretending to be your grandchild in trouble, asking for money urgently.</p>
-      <div class="example-box">"Grandma, it's me! I'm in trouble and need $500 in gift cards — please don't tell Mom." — Hang up and call your grandchild directly.</div>
+      <div class="example-box">"Grandma, it's me! I'm in trouble and need $500 in gift cards, please don't tell Mom." Hang up and call your grandchild directly.</div>
       <p><strong>Phishing Email:</strong> A fake email pretending to be from your bank, the IRS, or Amazon, asking you to click a link and enter your details.</p>
+      <div class="example-box">Multiple unauthorized withdrawls have been detected in your bank account. Login to resolve them: www.bankcom.xyz/login</div>
     </div>
 
     <div class="section-block">
       <h2>What To Do If You're Targeted</h2>
       <ul>
-        <li>Hang up, close the email, or delete the text — right away.</li>
+        <li>Hang up, close the email, or delete the text right away.</li>
         <li>Do <strong>not</strong> click any links or call any phone numbers in suspicious messages.</li>
         <li>Talk to a trusted family member or friend before doing anything.</li>
-        <li>Report it: call 1-877-382-4357 (the FTC's fraud hotline).</li>
+        <li>Report it! call the FTC's fraud hotline at 1-877-382-4357.</li>
       </ul>
       <div class="tip-box tip-gold">
-        <strong>💛 You're not alone:</strong> Millions of people are targeted by scams every year. Being tricked doesn't mean you did anything wrong — scammers are professionals at deception.
+        <strong>You're not alone or unintelligent:</strong> Millions of people are targeted by scams every year. Being tricked doesn't mean you did anything wrong: scammers are professional liars and manipulators.
       </div>
     </div>
 
@@ -130,13 +131,13 @@
   <div class="module-page">
     <div class="module-header">
       <span class="module-tag tag-teal">Module 2</span>
-      <h1>🔒 Strong Passwords</h1>
-      <p>A good password is your first line of defense online. This lesson shows you how to create strong ones — and how to keep track of them.</p>
+      <h1>Strong Passwords</h1>
+      <p>A good password is your first line of defense online. This lesson shows you how to create strong ones and how to keep track of them.</p>
     </div>
 
     <div class="section-block">
       <h2>Why Passwords Matter</h2>
-      <p>When you create an account online — for email, banking, or shopping — a password is the key to that account. A weak password is like a flimsy lock on your front door.</p>
+      <p>When you create an account online, whether it be for email, banking, or shopping, a password is the key to that account. Using a weak password is like a broken lock securing your door.</p>
       <p>If a scammer guesses your password, they can access your email, your bank account, and even your personal photos.</p>
     </div>
 
@@ -145,50 +146,50 @@
       <ul>
         <li>Using your name, birthday, or pet's name.</li>
         <li>Common words like "password," "hello," or "123456."</li>
-        <li>Short passwords — anything under 8 characters.</li>
-        <li>Using the same password for every account.</li>
+        <li>Short passwords (anything under 8 characters.)</li>
+        <li>Using the same password for multiple accounts.</li>
       </ul>
       <div class="tip-box tip-coral">
-        <strong>🚫 Avoid these:</strong> "Mary1950" · "password123" · "ilovemydogs" — these are among the first things hackers try.
+        <strong>Avoid these:</strong> "Mary1950" · "password123" · "ilovemydogs" as these are among the first things hackers try.
       </div>
     </div>
 
     <div class="section-block">
       <h2>How to Create a Strong Password</h2>
-      <p>The best passwords are <strong>long, random, and unique</strong>. Here's a simple method that works great:</p>
-      <p><strong>The "Three Random Words" method:</strong> Pick 3 words that have nothing to do with each other, then add some numbers and a symbol.</p>
+      <p>The best passwords are <strong>long, random, and unique</strong>. Here's a simple method that works great endorsed by the US FTC and UK NCSC:</p>
+      <p><strong>The "Three Random Words" methoed:</strong> Pick 3 words that have nothing to do with each other, then add some numbers and a symbol.</p>
       <div class="example-box">
-        🍎 "Apple" + 🚂 "Train" + 🌵 "Cactus" → <strong>AppleTrain!Cactus47</strong><br><br>
+        "Apple" + "Train" + "Cactus" = <strong>AppleTrain!Cactus47</strong><br><br>
         This is easy to remember but very hard to guess. It's 20 characters long!
       </div>
       <p><strong>Tips for a great password:</strong></p>
       <ul>
         <li>At least 12 characters long (longer is better)</li>
         <li>Mix uppercase and lowercase letters</li>
-        <li>Include a number and a symbol like ! @ # $</li>
+        <li>Include a number and a symbol like ! @ # or $</li>
         <li>Never use it for more than one account</li>
       </ul>
       <div class="tip-box tip-teal">
-        <strong>✅ Strong example:</strong> "BlueSky!Porch84" — 15 characters, mixed case, a symbol, and numbers. Much better than "Mary1950"!
+        <strong>Strong example:</strong> "BlueSky!Porch84" — 15 characters, mixed case, a symbol, and numbers.
       </div>
     </div>
 
     <div class="section-block">
       <h2>How to Keep Track of Passwords</h2>
       <p>It's hard to remember many different passwords. Here are your options:</p>
-      <p><strong>Option 1 — Write them down</strong> (safely): Keep a small notebook with your passwords. Store it in a secure, private place — not on your desk or near your computer. Label it something ordinary.</p>
+      <p><strong>Option 1 — Write them down</strong> (safely): Keep a small notebook with your passwords. Store it in a secure, private place. Label it something ordinary.</p>
       <p><strong>Option 2 — Use a Password Manager:</strong> These are apps (like LastPass or the one built into your phone) that store all your passwords securely. You only need to remember one master password.</p>
       <div class="tip-box tip-gold">
-        <strong>💛 Ask for help:</strong> Setting up a password manager is easier with a family member or tech helper. It's worth the effort — you only set it up once!
+        <strong>Ask for help:</strong> Setting up a password manager is easier with a family member or tech helper. It's worth the effort as you only set it up once!
       </div>
     </div>
 
     <div class="section-block">
       <h2>Two-Step Verification</h2>
-      <p>Many websites offer "two-step verification" (also called 2FA). When you log in, they send a text message with a short code to your phone. You type that code to prove it's really you.</p>
+      <p>Many websites offer "two-step verification" (also called 2FA). When you log in, they send a text message with a short code to your phone. You then type that code to prove it's really you.</p>
       <p>This is like having two locks on your door. Even if someone guesses your password, they still can't get in without your phone.</p>
       <div class="tip-box tip-blue">
-        <strong>📱 Turn it on:</strong> If your bank or email offers two-step verification, it's a good idea to enable it. Ask a family member or the bank to help you set it up.
+        <strong>Turn it on:</strong> If your bank or email offers two-step verification, it's a good idea to enable it. Ask a family member or the bank to help you set it up.
       </div>
     </div>
 
@@ -206,13 +207,13 @@
   <div class="module-page">
     <div class="module-header">
       <span class="module-tag tag-blue">Module 3</span>
-      <h1>📹 Video Calling</h1>
+      <h1>Video Calling</h1>
       <p>Video calls let you see and talk to family and friends face-to-face, even from far away. Let's learn how to use them with confidence.</p>
     </div>
 
     <div class="section-block">
       <h2>What Is a Video Call?</h2>
-      <p>A video call is like a phone call — but with video. You can see the person you're talking to on your screen, and they can see you. It's a wonderful way to feel connected.</p>
+      <p>A video call is like a phone call but with video, simple! You can see the person you're talking to on your screen, and they can see you. It's a wonderful way to feel connected.</p>
       <p>Popular apps include <strong>FaceTime</strong> (for Apple devices like iPhones and iPads) and <strong>Zoom</strong> (works on any device, great for groups).</p>
     </div>
 
@@ -224,43 +225,42 @@
         <li>The app installed (FaceTime comes pre-installed on Apple devices; Zoom is a free download).</li>
       </ul>
       <div class="tip-box tip-blue">
-        <strong>📡 Wi-Fi tip:</strong> Video calls use more internet than regular calls. If the image is blurry or choppy, try moving closer to your Wi-Fi router.
+        <strong>Innternet usage tip:</strong> Video calls use more network bandwidth than regular calls. If the image is blurry, fuzzy, or choppy, try moving closer to your Wi-Fi router.
       </div>
     </div>
 
     <div class="section-block">
       <h2>How to Make a FaceTime Call</h2>
       <ul>
-        <li><strong>Step 1:</strong> Open the FaceTime app on your iPhone or iPad — it looks like a green video camera.</li>
+        <li><strong>Step 1:</strong> Open the FaceTime app on your iPhone or iPad (it looks like a green video camera.)</li>
         <li><strong>Step 2:</strong> Tap the "+" button to start a new call.</li>
         <li><strong>Step 3:</strong> Type in the name or phone number of the person you want to call.</li>
         <li><strong>Step 4:</strong> Tap "Video" to start the video call.</li>
         <li><strong>Step 5:</strong> When you're done, tap the red "End" button.</li>
       </ul>
       <div class="tip-box tip-teal">
-        <strong>📱 Both people need Apple:</strong> FaceTime only works between Apple devices (iPhones, iPads, or Macs). If the other person has Android, use Zoom instead.
+        <strong>Both people need Apple to FaceTime:</strong> FaceTime only works between Apple devices (iPhones, iPads, or Macs). If the other person has Android, use Zoom instead.
       </div>
     </div>
 
     <div class="section-block">
       <h2>How to Join a Zoom Meeting</h2>
       <ul>
-        <li><strong>Step 1:</strong> Someone will send you a Zoom link — usually by text message or email. It looks like a web address (e.g., zoom.us/j/1234567890).</li>
+        <li><strong>Step 1:</strong> Someone will send you a Zoom link. It looks like a web address (e.g., zoom.us/j/6767676767).</li>
         <li><strong>Step 2:</strong> Tap or click the link. Your phone or computer will open Zoom automatically.</li>
         <li><strong>Step 3:</strong> Tap "Join with Video" to let others see you.</li>
         <li><strong>Step 4:</strong> Tap "Join with Audio" (or "Call Over Internet") so others can hear you.</li>
         <li><strong>Step 5:</strong> You're in! To leave, tap "Leave" or the red "X."</li>
       </ul>
-      <div class="example-box">If you receive a text that says "Join our family call Saturday at 2pm: zoom.us/j/987654321" — just tap that link at 2pm and follow the steps above.</div>
     </div>
 
     <div class="section-block">
       <h2>During the Call: Helpful Buttons</h2>
       <ul>
-        <li><strong>🔇 Mute/Unmute:</strong> Tap the microphone icon to turn your sound on or off. Mute yourself when you're not speaking in large groups — it reduces background noise.</li>
-        <li><strong>📷 Camera on/off:</strong> Tap the camera icon to show or hide your video.</li>
-        <li><strong>💬 Chat:</strong> In Zoom, you can type messages to everyone — great if someone can't hear you.</li>
-        <li><strong>🔴 Leave:</strong> Always tap "Leave" rather than just closing the app — it lets others know you've gone.</li>
+        <li><strong>Mute/Unmute:</strong> Tap the microphone icon to turn your sound on or off. Mute yourself when you're not speaking in large groups.</li>
+        <li><strong>Camera on/off:</strong> Tap the camera icon to show or hide your video.</li>
+        <li><strong>Chat:</strong> In Zoom, you can type messages to everyone.</li>
+        <li><strong>Leave:</strong> Always tap "Leave" rather than just closing the app. It lets others know you've gone and ensures you've truly disconnected.</li>
       </ul>
       <div class="tip-box tip-gold">
         <strong>💡 Lighting tip:</strong> Sit facing a window or a lamp — natural light in front of you makes you look great on video! Avoid sitting with a window behind you.
@@ -271,7 +271,7 @@
       <h2>Staying Safe on Video Calls</h2>
       <ul>
         <li>Only join calls from people you know. Be cautious about links from strangers.</li>
-        <li>You're allowed to keep your camera off if you're not comfortable — just tap the camera icon.</li>
+        <li>You're allowed to keep your camera off if you're not comfortable.</li>
         <li>If something feels wrong during a call, it's okay to leave immediately.</li>
       </ul>
     </div>
@@ -290,7 +290,7 @@
   <div class="survey-page">
     <div class="module-header">
       <span class="module-tag" style="background:#E8F5E9;color:#2E7D32;">Post-Workshop</span>
-      <h1>📋 Workshop Survey</h1>
+      <h1>Workshop Survey</h1>
       <p>Thank you for attending! Your feedback helps make future workshops even better. This takes about 3 minutes.</p>
     </div>
 
@@ -336,9 +336,9 @@
         <div class="survey-q">
           <label>Which module(s) did you find most helpful? (Select all that apply)</label>
           <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" name="modules" value="scams"> 🚨 Recognizing Scams</label>
-            <label class="checkbox-label"><input type="checkbox" name="modules" value="passwords"> 🔒 Strong Passwords</label>
-            <label class="checkbox-label"><input type="checkbox" name="modules" value="video"> 📹 Video Calling</label>
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="scams"> Recognizing Scams</label>
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="passwords"> Strong Passwords</label>
+            <label class="checkbox-label"><input type="checkbox" name="modules" value="video"> Video Calling</label>
           </div>
         </div>
         <div class="survey-q">
@@ -393,10 +393,10 @@
         <div class="survey-q">
           <label>What topic would you like to learn about next?</label>
           <div class="checkbox-group">
-            <label class="checkbox-label"><input type="checkbox" name="next" value="shopping"> 🛒 Online Shopping Safely</label>
-            <label class="checkbox-label"><input type="checkbox" name="next" value="social"> 👥 Social Media Basics</label>
-            <label class="checkbox-label"><input type="checkbox" name="next" value="health"> 🏥 Using Health Portals</label>
-            <label class="checkbox-label"><input type="checkbox" name="next" value="phone"> 📱 Smartphone Tips</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="shopping"> Online Shopping Safely</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="social"> Social Media Basics</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="health"> Using Health Portals</label>
+            <label class="checkbox-label"><input type="checkbox" name="next" value="phone"> Smartphone Tips</label>
           </div>
         </div>
         <div class="survey-q">
@@ -437,7 +437,7 @@
 <script>
 const QUIZZES = {
   scams: {
-    title: "🚨 Scam Recognition Quiz",
+    title: "Scam Recognition Quiz",
     subtitle: "5 questions — see how scam-smart you are!",
     questions: [
       {
@@ -473,7 +473,7 @@ const QUIZZES = {
     ]
   },
   passwords: {
-    title: "🔒 Password Strength Quiz",
+    title: "Password Strength Quiz",
     subtitle: "5 questions — test your password knowledge!",
     questions: [
       {
@@ -509,7 +509,7 @@ const QUIZZES = {
     ]
   },
   video: {
-    title: "📹 Video Calling Quiz",
+    title: "Video Calling Quiz",
     subtitle: "5 questions — how much did you learn?",
     questions: [
       {
